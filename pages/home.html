@@ -1,0 +1,541 @@
+<div id="home">
+	<!-- 布局 -->
+	<div class="outerDiv">
+		<div class="row">
+			<div class="col-sm-3">
+				<!-- 3个div -->
+				<div class="totalDiv bg-white">
+					<div class="iconDiv bg-green">
+						<i class="iconfont icon-yun"></i>
+					</div>
+					<div class="numDiv">
+						<span>99.9%</span>
+						<small>SERVER UPTIME</small>
+					</div>
+				</div>
+				<div class="totalDiv bg-white">
+					<div class="iconDiv bg-purple">
+						<i class="iconfont icon-user"></i>
+					</div>
+					<div class="numDiv">
+						<span>117K</span>
+						<small>USERS TOTAL</small>
+					</div>
+				</div>
+				<div class="totalDiv bg-white">
+					<div class="iconDiv bg-blue">
+						<i class="iconfont icon-18"></i>
+					</div>
+					<div class="numDiv">
+						<span>2,470</span>
+						<small>NEW DAILY PHOTOS</small>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="visDiv">
+					<div id="visContainer"></div>
+					<div class="numDiv">
+						<span>14.85%</span>
+						<small>More Visitors</small>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="uptimeDiv">
+					<div id="uptimeContainer"></div>
+					<div class="numDiv">
+						<span class="color-purple">95.8%</span>
+						<small>CURRENT SERVICE UPTIME</small>
+					</div>
+				</div>
+				<div class="salesDiv">
+					<div id="salesContainer"></div>
+					<div class="numDiv">
+						<span class="color-green">320,45</span>
+						<small>AVG OF SALES</small>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="up">
+					<div id="upchart" style="height:250px"></div>
+					
+				</div>
+				<div class="pag  bg-white">
+					<span class="color-gray">PageViews</span>
+				</div>
+				<div class="vister bg-white">
+					<span class="color-gray">Visitor</span>
+				</div>
+				<div class="con   bg-white">
+					<span class="color-gray">Converted Sales</span>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="right bg-white">
+					<div id="dow" style="height:200px">
+					</div>
+				</div>
+				<div class="right-down bg-white">
+					<div id="dow-n" style="height:150px"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+<script>
+	$(function(){
+		drawVis();
+		drawUptime();
+		drawSales();
+		drawup();
+		drawdow();
+        function drawdow(){
+			var chart = Highcharts.chart('dow-n', {
+				chart:{
+					margin:[0,0,0,0],
+				},
+				credits:{
+					enabled:false,
+				},
+				colors:['skyblue'],
+				title: {
+					text: ''
+				},
+				xAxis: {
+					visible:false,
+				},
+				yAxis: {
+					visible:false,
+				},
+				series: [{
+					type: 'column',
+					colorByPoint: true,
+					data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4,148.5, 216.4, 194.1, 95.6, 54.4],
+					showInLegend: false
+				}]
+			});
+		}
+        var chart = Highcharts.chart('dow',{
+	chart: {
+		type: 'area'
+	},
+	title: {
+		text: ''
+	},
+	credits:{
+		enabled:false
+	},
+	xAxis: {
+		allowDecimals: false
+	},
+	yAxis: {
+		title: {
+			text: ''
+		},
+		labels: {
+			formatter: function () {
+				return this.value / 1000 + 'k';
+			}
+		}
+	},
+	tooltip: {
+		pointFormat: '{series.name} 制造 <b>{point.y:,.0f}</b>枚弹头'
+	},
+	plotOptions: {
+		area: {
+			pointStart: 1940,
+			marker: {
+				enabled: false,
+				symbol: 'circle',
+				radius: 2,
+				states: {
+					hover: {
+						enabled: true
+					}
+				}
+			}
+		}
+	},
+	series: [{
+		name: '',
+		data: [null, null, null, null, null, 6, 11, 32, 110, 235, 369, 640,
+			   1005, 1436, 2063, 3057, 4618, 6444, 9822, 15468, 20434, 24126,
+			   27387, 29459, 31056, 31982, 32040, 31233, 29224, 27342, 26662,
+			   26956, 27912, 28999, 28965, 27826, 25579, 25722, 24826, 24605,
+			   24304, 23464, 23708, 24099, 24357, 24237, 24401, 24344, 23586,
+			   22380, 21004, 17287, 14747, 13076, 12555, 12144, 11009, 10950,
+			   10871, 10824, 10577, 10527, 10475, 10421, 10358, 10295, 10104]
+	}, {
+		data: [null, null, null, null, null, null, null, null, null, null,
+			   5, 25, 50, 120, 150, 200, 426, 660, 869, 1060, 1605, 2471, 3322,
+			   4238, 5221, 6129, 7089, 8339, 9399, 10538, 11643, 13092, 14478,
+			   15915, 17385, 19055, 21205, 23044, 25393, 27935, 30062, 32049,
+			   33952, 35804, 37431, 39197, 45000, 43000, 41000, 39000, 37000,
+			   35000, 33000, 31000, 29000, 27000, 25000, 24000, 23000, 22000,
+			   21000, 20000, 19000, 18000, 18000, 17000, 16000]
+	}]
+});
+
+		function  drawup(){
+			var chart = Highcharts.chart('upchart', {
+	title: {
+		text: '',
+		align: 'center',
+		verticalAlign: 'middle',
+		y: 50
+	},
+	credits:{
+		enabled:false
+	},
+	plotOptions: {
+		pie: {
+			dataLabels: {
+				enabled: false,
+			},
+			startAngle: -120, // 圆环的开始角度
+			endAngle: 120,    // 圆环的结束角度
+			center: ['50%', '75%']
+		}
+	},
+	series: [{
+		type: 'pie',
+		name: '浏览器占比',
+		innerSize: '50%',
+		data: [
+			['Firefox',   45.0],
+			['IE',       26.8],
+			['Chrome', 12.8],
+			['Safari',    8.5],
+			['Opera',     6.2],
+			{
+				name: '其他',
+				y: 0.7,
+				dataLabels: {
+					// 数据比较少，没有空间显示数据标签，所以将其关闭
+					enabled: false
+				}
+			}
+		]
+	}]
+});
+
+		}
+		function drawSales(){
+			var chart = Highcharts.chart('salesContainer', {
+				credits:{
+					enabled:false,
+				},
+				chart: {
+					margin : [0, 0 , 0, 100]
+				},
+				title: {
+					floating:true,
+					text: ''
+				},
+				tooltip: {
+					pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+				},
+				plotOptions: {
+					pie: {
+						allowPointSelect: true,
+						cursor: 'pointer',
+						dataLabels: {
+							enabled: false,
+						},
+					}
+				},
+				series: [{
+					type: 'pie',
+					innerSize: '60%',
+					name: 'Sales',
+					data: [
+						['Firefox',45.0],
+						['IE',26.8],
+						['Chrome',12.8],
+						['Safari',8.5],
+						['Opera',6.2],
+						['其他',0.7]
+					]
+				}]
+			});
+		}
+		function drawUptime(){
+			var chart = Highcharts.chart('uptimeContainer', {
+				chart:{
+					margin:[0,0,0,0],
+				},
+				credits:{
+					enabled:false,
+				},
+				colors:['#862eb7'],
+				title: {
+					text: ''
+				},
+				xAxis: {
+					visible:false,
+				},
+				yAxis: {
+					visible:false,
+				},
+				series: [{
+					type: 'column',
+					colorByPoint: true,
+					data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4,148.5, 216.4, 194.1, 95.6, 54.4],
+					showInLegend: false
+				}]
+			});
+		}
+		function drawVis(){
+			// 绘制
+			var chart = Highcharts.chart('visContainer', {
+				chart:{
+					margin:[0,0,0,0],
+				},
+				credits:{
+					enabled:false,
+				},
+				colors:['#66bb0d','#cccccc'],
+				title: {
+					text: ''
+				},
+				xAxis: {
+					visible:false,
+				},
+				yAxis: {
+					visible:false,
+					title: {
+						text: ''
+					}
+				},
+				legend: {
+					floating:true,
+					layout: 'vertical',
+					align: 'right',
+					verticalAlign: 'top'
+				},
+				plotOptions: {
+					series: {
+						label: {
+							connectorAllowed: false
+						},
+						pointStart: 2010
+					}
+				},
+				series: [{
+					name: 'Page',
+					data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175,24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+				}, {
+					name: 'Visitors',
+					data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434,43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+				}]
+			});
+		}
+	});
+</script>
+<style>
+	#home{
+
+	}
+	.bg-white{
+		background-color: #fff;
+	}
+	.bg-green{
+		background-color:#66bb0d;
+	}
+	.bg-purple{
+		background-color: #7C30BE;
+	}
+	.bg-blue{
+		background-color: #38B9EB;
+	}
+	.color-purple{
+		color:#7C30BE;
+	}
+	.color-green{
+		color:#66bb0d;
+	}
+	.color-gray{
+		color: #C7C0C0;
+	}
+	.outerDiv{
+		width: 95%;
+		margin:0 auto;
+	}
+	.totalDiv{
+		overflow:hidden;
+		padding: 10px;
+		border-radius: 5px;
+		margin-top:10px;
+	}
+	.totalDiv .iconDiv,.totalDiv .numDiv{
+		float:left; 
+	}
+	.iconDiv{
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		text-align: center;
+	}
+	.iconDiv i{
+		line-height: 50px;
+		color:white;
+		font-size: 30px;
+	}
+	.totalDiv .numDiv{
+		margin-left: 20px;
+		padding-top:5px;
+	}
+	.numDiv span{
+		font-size: 24px;
+		line-height: 24px;
+	}
+	.numDiv small{
+		display: block;
+	}
+	#visContainer{
+		height: 230px;
+		margin-top: 10px;
+	}
+	.visDiv,.uptimeDiv,.salesDiv{
+		position: relative;
+	}
+	.visDiv .numDiv,.uptimeDiv .numDiv,.salesDiv .numDiv{
+		position: absolute;
+		top:20px;
+		left: 20px;
+	}
+	.visDiv span{
+		color:#66bb0d;
+		/*color:#862eb7;*/
+	}
+	.uptimeDiv,.salesDiv{
+		margin-top: 10px;
+	}
+	#uptimeContainer,#salesContainer{
+		height: 110px;
+	}
+	.up{
+		margin-top:10px;
+	}
+	#upchart{
+		height: 200px;
+		border-bottom: 1px solid #EEEEEE;
+	}
+	.pag,.vister,.con{
+		height: 40px;
+		position: relative;
+		border-bottom: 1px solid #EEEEEE;
+	}
+	.pag span,.vister span,.con span{
+		position: absolute;
+		margin-left: 1em;
+		height: 40px;
+		line-height: 40px;
+
+	}
+	.right{
+		margin-top:10px;
+		margin-left: 20px;
+		height: 200px;
+		border-bottom: 1px solid #EEEEEE;
+	}
+	.right-down{
+		margin-top:10px;
+		margin-left: 20px;
+		/*height: 100px;
+		*/
+	}
+</style>
+
+
+
+<!-- <div id="home">
+	home页面
+	<div class="switch">
+      <input type="checkbox"/>
+    </div>
+    <div id="homeContainer"></div>
+</div>
+<script>
+	$(function(){
+		$('#home input[type=checkbox]').bootstrapSwitch('state',false);
+		$("#home").on({
+			'switchChange.bootstrapSwitch':function (event,state) {
+		          alert(state);
+		          // 点击修改之后，向后台传递参数
+		      }
+		},'[type=checkbox]');
+		// 变量声明和函数声明都会提前，并且变量声明提前到最前边，然后是函数声明。
+		//函数声明提前 
+		/*var a;
+		function a(){}*/
+		/*console.log(a);
+		var a = 1;
+		function a(){}
+		console.log(a);*/
+		draw();
+		function draw(){
+			// 绘制
+			var chart = Highcharts.chart('homeContainer', {
+				chart:{
+					margin:[0,0,0,0],
+				},
+				credits:{
+					enabled:false,
+				},
+				colors:['red','#00ff00'],
+				title: {
+					text: ''
+				},
+				xAxis: {
+					visible:false,
+				},
+				yAxis: {
+					visible:false,
+					title: {
+						text: ''
+					}
+				},
+				legend: {
+					floating:true,
+					layout: 'vertical',
+					align: 'right',
+					verticalAlign: 'top'
+				},
+				plotOptions: {
+					series: {
+						label: {
+							connectorAllowed: false
+						},
+						pointStart: 2010
+					}
+				},
+				series: [{
+					name: '安装，实施人员',
+					data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+				}, {
+					name: '工人',
+					data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+				}]
+			});
+		}
+
+
+
+
+
+	});
+</script>
+<style>
+	#home{
+		color: red;
+	}
+	#homeContainer{
+		width: 400px;
+		height: 200px;
+	}
+</style> -->

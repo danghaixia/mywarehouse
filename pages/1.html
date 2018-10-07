@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="id">
+	<div class="optionDiv">
+		<select name="categoryId" id=""></select>
+		<button class="btn btn-success btn-sm">新 增</button>
+		<button class="btn btn-success btn-sm ">批量删除</button>
+	</div>
+	<table class="table table-bordered text-center">
+		<tr>
+			<td>编号</td>
+			<td>栏目标题</td>
+			<td>所属栏目</td>
+			<td>列表样式</td>
+			<td>作者</td>
+			<td>发布时间</td>
+			<td>阅读次数</td>
+			<td>操作</td>
+		</tr>
+	</table>
+</div>
+<style>
+	#info{
+		padding: 10px;
+		background-color: #fff;
+	}
+	#info .optionDiv{
+		overflow: hidden;
+	}
+	#info .optionDiv *{
+		float: left;
+		margin-right: 5px;
+	}
+	#info .optionDiv select{
+		width: 200px;
+		height: 30px;
+	}
+</style>
+</body>
+</html>
